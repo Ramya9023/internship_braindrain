@@ -1,0 +1,190 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"  type="text/css"  href="{% static 'App.css' %}">
+    <link rel="stylesheet"  type="text/css"  href="{% static 'sidenav.css' %}">
+    <!--<link rel="stylesheet"  type="text/css"  href="{% static 'footer.css' %}">-->
+    <link rel="stylesheet"  type="text/css"  href="{% static 'question.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>BrainDrain</title>
+  </head>
+  <body>
+
+    <div id="NAVBAR" style="position:fixed;width:100%; z-index:1; ">
+
+        <nav class="navbar navbar-icon-top navbar-expand-lg mystyle1" style="background-color:black;">
+          <a class="navbar-brand Icon" href="myQuestion" style="color:orange; font-size:45px; font-family: 'Lobster', cursive;"><b class="">BrainDrain</b></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item bc" style="font-family:Verdana;">
+                <a class="nav-link" href="UserProfile">
+                <b class="nav1 sides">
+                  <i class="fa fa-home"></i>Home</b>
+                  </a>
+              </li>
+              <li class="nav-item bc" style="font-family:Verdana;">
+                <a class="nav-link active" href="AskQuestion">
+                  <b class="nav1 side1">Ask Questions</b>
+                </a>
+              </li>
+              <!--<li class="nav-item bc" style="font-family:Verdana;">
+                <a class="nav-link active" href="UserProfile">
+                 <b class="nav1 side1"> User Profile</b>-->
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+                
+            {% if user.is_authenticated %}
+            
+            <li class="nav-item bc" style="margin-top:15px;" style="font-family:Verdana;">
+                 <b style="font-family:Verdana;">Welcome, {{user.username}}</b>
+                </a>
+              </li>
+            
+              <li class="nav-item bc" style="margin-top:7px;" style="font-family:Verdana;">
+                <a class="nav-link active" href="logout">
+                 <b class="nav1" style="border:1px solid white;font-family:Verdana;">Logout</b>
+                </a>
+              </li>
+
+            {% else %}
+
+            <li class="nav-item bc">
+                <a class="nav-link active" href="login">
+                 <b class="nav1">Login</b>
+                </a>
+              </li>
+  
+              <li class="nav-item bc">
+                <a class="nav-link active" href="register">
+                 <b class="nav1">Register</b>
+                </a>
+              </li>
+              
+              {% endif %}
+
+              <li class="nav-item bc">
+                <a class="nav-link active" href="UserNotifications">
+
+                  {% if count_notis > 0 %}
+
+                  <img src="{% static 'bell.png' %}" style="height:30px;width:35px;margin-top:10px;margin-right:15px;" class="lev-avatar" />
+
+                  {% if count_notis > 10 %}
+                  <span class="badge badge-danger" style="margin-left:-37px;border-radius:30px;">{{count_notis}}</span>
+                  {% elif count_notis < 10 %}
+                  <span class="badge badge-danger" style="margin-left:-30px;border-radius:30px;">{{count_notis}}</span>
+                  {% endif %}
+
+                  {% else %}
+                    <img src="{% static 'Nobell.png' %}" style="height:30px;width:35px;margin-top:10px;" class="lev-avatar" />
+                    {% endif %}
+
+
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+  
+  </div>
+<br>
+
+<div class="bkc" style="margin-top:45px;">
+    <!--<img style="margin-top:30px;margin-left:90px ;" src="{{UP.prof_pic}}" class="avatar avatar2" />-->
+                <ul class="ul1">
+                    <li class="widget widget-btn mg1" style="font-family:Verdana;">
+                      <a href="AskQuestion"><button type="button" data-toggle="modal" class="btn btn2">
+                            <i class="fa fa-plus"></i> ASK A QUESTION</button>
+                      </a> </li>
+                </ul>
+    
+                <hr class="line"/>
+        
+                <ul class="ul1 s1">
+    
+                    <li class="mg">
+    
+                        <ul class="ul1"><li><a href="index">
+    
+                        <a href="myQuestion">  <button type="button" class="btn btn1" style="color:white; font-family:Verdana;">
+                            <i class="sn fa fa-question-circle"></i>Questions</button></a>
+                          </a>
+
+                        </li>
+    
+                        <!--<li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-tags"></i>Tags</button></a></li>
+    
+                        <li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-trophy"></i>Level</button></a></li>
+                        <li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-th-list"></i>Categories</button></a></li>-->
+                        <li class=""><a href="allUser">
+                        <button type="button" class="btn btn1" style="color:white; font-family:Verdana;">
+                            <i class="sn fa fa-users"></i >Users</button></a></li>
+                        <li class=""><a href="UserSettings">
+                        <button type="button" class="btn btn1" style="color:white; font-family:Verdana;" >
+                            <i class="sn fa fa-th-list"></i >Settings</button></a></li>
+                          </ul>
+                    </li>
+                    </ul>
+     
+                
+    
+               <!-- <div class="sn1">
+                    ©2020  <br/>
+                    <a style="color:#3498db">Terms &amp; Privacy</a>
+                </div>
+    
+                <hr class="line"/>-->
+    
+            </div>
+
+
+            {% block content %}
+
+
+            {% endblock %}
+
+       
+ <!--<footer class="main-footer">
+        
+     <div class="container" style="bottom:0;">
+          <div class="row">
+              <p style="padding:25px; text-align:center; width:100%; bottom:0; background-color:black; color:white;">&copy; 2022. All rights reserved.</p>
+            
+      </footer> -->
+  </body>
+
+
+
+  </html>

@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"/>
+      
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"  type="text/css"  href="{% static 'styling.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>BrainDrain</title>
+  </head>
+  <body>
+   
+
+    <div id="root"></div>
+
+    <div class="wrapper fadeInDown">
+      <div id="formContent" style="background-color:black; opacity:0.7">
+
+        <div class="fadeIn first" >
+          <h1 style="font-family: 'Lobster', cursive; margin-top:20px; color: white;">LOGIN</h1>
+        </div>
+    
+          <form action="login" method="POST">
+    
+            {% csrf_token %}
+  
+          <input style="margin-top:50px; border:2px solid black;" type="text" id="login" class="fadeIn second" name="username" placeholder="Enter Username ">
+          <input style="margin-top:30px; border:2px solid black;" type="password" id="password" class="fadeIn third" name="password" placeholder="Enter Password ">
+          <input style="margin-top: 20px; background-color:#0275d8" type="submit" class="fadeIn fourth" id="btn_lg"  value="Log In">
+
+        </form>
+    
+        <div id="formFooter">
+          <a class="underlineHover" href="register">Don't have an account ? Sign up </a>
+        </div>
+    
+      </div>
+    </div>
+   
+ 
+  </body>
+</html>
